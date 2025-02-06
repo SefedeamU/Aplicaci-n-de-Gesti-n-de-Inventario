@@ -46,8 +46,8 @@ Esta API proporciona endpoints para la gestión de productos, pedidos y clientes
 ### Configuración
 1. Clona el repositorio:
     ```sh
-    git clone https://github.com/your-repo/ecommerce-order-system.git
-    cd ecommerce-order-system
+    git clone https://github.com/SefedeamU/ECommerce-Order-System-API.git
+    cd ECommerce-Order-System-API
     ```
 
 2. Crea un archivo `.env` basado en el archivo `.env.example` y completa las variables de entorno requeridas.
