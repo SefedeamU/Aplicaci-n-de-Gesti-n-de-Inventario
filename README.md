@@ -148,13 +148,13 @@ El manejo de transacciones se realiza utilizando `TransactionUtil`, que ejecuta 
 La API está desarrollada utilizando **Spring WebFlux** para proporcionar un modelo de programación reactivo. Las operaciones de base de datos se realizan de manera no bloqueante utilizando `ReactiveCrudRepository` para PostgreSQL y `ReactiveMongoRepository` para MongoDB.
 
 # Librerías Principales
-- **Spring Boot**: Framework principal para el desarrollo de la aplicación.
-- **Spring WebFlux**: Para la programación reactiva y la creación de endpoints no bloqueantes.
-- **Spring Data R2DBC**: Para la interacción reactiva con la base de datos PostgreSQL.
-- **Spring Data MongoDB**: Para la interacción reactiva con la base de datos MongoDB.
-- **Spring Security**: Para la gestión de la seguridad y autenticación.
-- **JWT**: Para la generación y validación de tokens JWT.
-- **Lombok**: Para reducir el código boilerplate mediante anotaciones.
+- **Spring Boot**
+- **Spring WebFlux**
+- **Spring Data R2DBC**
+- **Spring Data MongoDB**
+- **Spring Security**
+- **JWT**
+- **Lombok**
 
 ## Cosas por Terminar
 
