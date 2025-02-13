@@ -2,8 +2,8 @@ package com.ecommerce.orders.ecommerceordersystem.config;
 
 import io.r2dbc.spi.ConnectionFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.data.r2dbc.config.EnableR2dbcAuditing;
 import org.springframework.data.r2dbc.core.R2dbcEntityTemplate;
@@ -17,7 +17,7 @@ import io.r2dbc.spi.ConnectionFactoryOptions;
 import static io.r2dbc.pool.PoolingConnectionFactoryProvider.MAX_SIZE;
 import static io.r2dbc.spi.ConnectionFactoryOptions.*;
 
-@Configuration
+@TestConfiguration
 @EnableTransactionManagement
 @EnableR2dbcAuditing
 @EnableR2dbcRepositories(
@@ -27,8 +27,8 @@ import static io.r2dbc.spi.ConnectionFactoryOptions.*;
         },
         entityOperationsRef = "r2dbcEntityTemplate"
 )
-@Profile("!test")
-public class JpaConfig {
+@Profile("test")
+public class TestConfig {
 
     @Value("${spring.r2dbc.url}")
     private String r2dbcUrl;

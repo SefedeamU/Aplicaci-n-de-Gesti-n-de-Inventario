@@ -7,9 +7,9 @@ services:
     ports:
       - "8080:8080"
     env_file:
-      - .env.example
+      - .env
     environment:
-      SPRING_R2DBC_URL: r2dbc:pool:postgresql://db:5432/ecommerce_db
+      SPRING_R2DBC_URL: ${SPRING_R2DBC_URL}
       SPRING_R2DBC_USERNAME: ${SPRING_R2DBC_USERNAME}
       SPRING_R2DBC_PASSWORD: ${SPRING_R2DBC_PASSWORD}
       SPRING_DATA_MONGODB_URI: ${SPRING_DATA_MONGODB_URI}
@@ -21,7 +21,7 @@ services:
   db:
     image: postgres:13
     env_file:
-      - .env.example
+      - .env
     environment:
       POSTGRES_DB: ecommerce_db
       POSTGRES_USER: ${POSTGRES_USER}
@@ -30,11 +30,14 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./sql:/app/sql
+      - ./init-db.sh:/docker-entrypoint-initdb.d/init-db.sh
+    command: ["bash", "/docker-entrypoint-initdb.d/init-db.sh"]
 
   mongo:
     image: mongo:4.4
     env_file:
-      - .env.example
+      - .env
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}

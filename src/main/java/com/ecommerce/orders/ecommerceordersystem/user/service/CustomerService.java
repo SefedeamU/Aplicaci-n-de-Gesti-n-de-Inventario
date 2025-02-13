@@ -46,7 +46,9 @@ public class CustomerService {
     }
 
     public Mono<UserDetails> loadUserByUsername(String username) {
-        return findByUsername(username);
+        return customerRepositoryPsql.findByEmail(username)
+                .switchIfEmpty(Mono.error(new UsernameNotFoundException("User not found with email: " + username)))
+                .cast(UserDetails.class);
     }
 
 
