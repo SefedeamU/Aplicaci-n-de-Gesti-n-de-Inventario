@@ -108,3 +108,80 @@ La API está desarrollada utilizando **Spring WebFlux** para proporcionar un mod
 ```
 https://app.swaggerhub.com/apis-docs/SergioFelipeDelgadoAmado(Sefedeam)/GestionInventario/1.0.0
 ```
+
+# Informe de Cobertura de Pruebas
+
+## Cobertura de Pruebas Unitarias
+
+### OrderRepositoryPsqlTest
+- **Método probado:** findByCustomerIdAndStatus
+- **Cobertura:** Verifica que el método findByCustomerIdAndStatus en el repositorio de pedidos devuelve un pedido específico basado en el ID del cliente y el estado del pedido.
+- **Uso de Mockito:** Sí
+
+### CustomerRepositoryPsqlTest
+- **Método probado:** findByEmail
+- **Cobertura:** Verifica que el método findByEmail en el repositorio de clientes devuelve un cliente específico basado en el correo electrónico.
+- **Uso de Mockito:** Sí
+
+### ProductRepositoryPsqlTest
+- **Método probado:** findAllById
+- **Cobertura:** Verifica que el método findAllById en el repositorio de productos devuelve todos los productos correspondientes a una lista de IDs.
+- **Uso de Mockito:** Sí
+
+## Cobertura de Pruebas de Integración
+
+### ProductRepositoryPsqlIntegrationTest
+- **Método probado:** findAllById
+- **Cobertura:** Verifica que el método findAllById en el repositorio de productos devuelve todos los productos correspondientes a una lista de IDs.
+
+### OrderRepositoryPsqlIntegrationTest
+- **Método probado:** findByCustomerIdAndStatus
+- **Cobertura:** Verifica que el método findByCustomerIdAndStatus en el repositorio de pedidos devuelve un pedido específico basado en el ID del cliente y el estado del pedido.
+
+### CustomerRepositoryPsqlIntegrationTest
+- **Método probado:** findByEmail
+- **Cobertura:** Verifica que el método findByEmail en el repositorio de clientes devuelve un cliente específico basado en el correo electrónico.
+
+## Cobertura de Pruebas de Controladores
+
+### OrderControllerTest
+- **Métodos probados:** getAllOrders, getOrderById, createOrder, confirmOrder, deleteOrder
+- **Cobertura:** Verifica que los métodos del controlador de pedidos manejan correctamente las solicitudes HTTP para obtener, crear, confirmar y eliminar pedidos.
+- **Uso de Mockito:** Sí
+
+### ProductControllerTest
+- **Métodos probados:** getAllProducts, getProductById, createProduct, updateProduct, deleteProduct
+- **Cobertura:** Verifica que los métodos del controlador de productos manejan correctamente las solicitudes HTTP para obtener, crear, actualizar y eliminar productos.
+- **Uso de Mockito:** Sí
+
+### CustomerControllerTest
+- **Métodos probados:** getAllCustomers, getCustomerById, createCustomer, updateCustomer, deleteCustomer
+- **Cobertura:** Verifica que los métodos del controlador de clientes manejan correctamente las solicitudes HTTP para obtener, crear, actualizar y eliminar clientes.
+- **Uso de Mockito:** Sí
+
+### AuthControllerTest
+- **Métodos probados:** login, register
+- **Cobertura:** Verifica que los métodos del controlador de autenticación manejan correctamente las solicitudes HTTP para el inicio de sesión y el registro de usuarios.
+- **Uso de Mockito:** Sí
+
+## Cobertura de Pruebas de Servicios
+
+### CustomerServiceTest
+- **Métodos probados:** getAllCustomers, getCustomerById, createCustomer, updateCustomer, deleteCustomer, findByUsername, loadUserByUsername
+- **Cobertura:** Verifica que los métodos del servicio de clientes manejan correctamente las operaciones de negocio relacionadas con los clientes.
+- **Uso de Mockito:** Sí
+
+### AuthServiceTest
+- **Métodos probados:** login, register
+- **Cobertura:** Verifica que los métodos del servicio de autenticación manejan correctamente las operaciones de negocio relacionadas con el inicio de sesión y el registro de usuarios.
+- **Uso de Mockito:** Sí
+
+### ProductServiceTest
+- **Métodos probados:** getAllProducts, getProductById, createProduct, updateProduct, deleteProduct
+- **Cobertura:** Verifica que los métodos del servicio de productos manejan correctamente las operaciones de negocio relacionadas con los productos.
+- **Uso de Mockito:** Sí
+
+### TransactionServiceTest
+- **Métodos probados:** getAllOrders, getOrderById, createOrderWithTransaction, addProductToOrder, removeProductFromOrder, checkout, deleteOrder
+- **Cobertura:** Verifica que los métodos del servicio de transacciones manejan correctamente las operaciones de negocio relacionadas con los pedidos y las transacciones.
+- **Uso de Mockito:** Sí
