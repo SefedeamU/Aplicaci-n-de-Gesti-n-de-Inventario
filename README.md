@@ -46,11 +46,11 @@ Esta API proporciona endpoints para la gestión de productos, pedidos y clientes
 ### Configuración
 1. Clona el repositorio:
     ```sh
-    git clone https://github.com/SefedeamU/ECommerce-Order-System-API.git
-    cd ECommerce-Order-System-API
+    git clone https://github.com/SefedeamU/Aplicaci-n-de-Gesti-n-de-Inventario.git
+    cd Aplicaci-n-de-Gesti-n-de-Inventario
     ```
 
-2. Crea un archivo `.env` basado en el archivo `.env.example` y completa las variables de entorno requeridas.
+2. Configurar el archivo `.env` con las credenciales adecuadas y las variables de entorno requeridas.
 
 3. Construye y ejecuta los contenedores Docker:
     ```sh
@@ -59,66 +59,13 @@ Esta API proporciona endpoints para la gestión de productos, pedidos y clientes
 
 ### Variables de Entorno
 La API utiliza variables de entorno para la configuración. Asegúrate de que las siguientes variables estén configuradas en tu archivo `.env`:
+- `SPRING_R2DBC_URL`
 - `SPRING_R2DBC_USERNAME`
 - `SPRING_R2DBC_PASSWORD`
-- `SPRING_DATA_MONGODB_URI`
 - `JWT_SECRET`
 - `POSTGRES_USER`
 - `POSTGRES_PASSWORD`
-- `MONGO_INITDB_ROOT_USERNAME`
-- `MONGO_INITDB_ROOT_PASSWORD`
 
-## Conexión del Frontend
-
-### Autenticación
-Para autenticar a los usuarios, el frontend debe enviar una solicitud POST a `/auth/login` con el correo electrónico y la contraseña del usuario. La respuesta incluirá un token JWT que debe ser almacenado y utilizado para solicitudes posteriores.
-
-Ejemplo:
-```javascript
-const response = await fetch('/auth/login', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ email: 'user@example.com', password: 'password' })
-});
-localStorage.setItem('token', data.token);
-```
-# Realización de Solicitudes Autenticadas
-
-Para los endpoints que requieren autenticación, incluye el token JWT en el encabezado Authorization de tus solicitudes.
-
-### Ejemplo: Obtener Pedidos
-
-```javascript
-const token = localStorage.getItem('token');
-const response = await fetch('/orders', {
-    method: 'GET',
-    headers: {
-        'Authorization': `Bearer ${token}`
-    }
-});
-const orders = await response.json();
-```
-
-### Ejemplo: Creación de un Producto
-
-```javascript
-const token = localStorage.getItem('token');
-const response = await fetch('/products', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
-    },
-    body: JSON.stringify({
-        name: 'New Product',
-        description: 'Product Description',
-        price: 19.99
-    })
-});
-const product = await response.json();
-```
 
 # Relación entre Clases
 
@@ -129,7 +76,7 @@ La clase `ProductPsql` representa un producto en la base de datos PostgreSQL. Co
 La clase `CustomerPsql` representa un cliente en la base de datos PostgreSQL. Contiene información como el nombre, el correo electrónico, la contraseña y el rol del cliente.
 
 ### Pedidos
-La clase `OrderMongo` representa un pedido en la base de datos MongoDB. Contiene información como el ID del cliente, una lista de IDs de productos, el total del pedido y el estado del pedido.
+La clase `OrderPsql` representa un pedido en la base de datos PostgreSQL. Contiene información como el ID del cliente, una lista de IDs de productos, el total del pedido y el estado del pedido.
 
 ## Relación
 - Un cliente puede realizar múltiples pedidos.
@@ -156,11 +103,3 @@ La API está desarrollada utilizando **Spring WebFlux** para proporcionar un mod
 - **JWT**
 - **Lombok**
 
-## Cosas por Terminar
-
-1. **Más Manejo de Excepciones y Errores**: Incluir más controladores de excepciones para manejar diferentes tipos de errores y proporcionar mensajes de error más detallados.
-2. **Creación de Más Tests Unitarios**: Aumentar la cobertura de tests unitarios para asegurar la calidad del código y detectar errores tempranamente.
-3. **Pruebas de Estrés**: Realizar pruebas de estrés para identificar y mejorar los puntos débiles de la API bajo alta carga.
-4. **Validación de Datos**: Mejorar la validación de datos de entrada para asegurar que los datos sean correctos y seguros.
-5. **Optimización de Transacciones**: Revisar y optimizar el manejo de transacciones para asegurar la consistencia y eficiencia.
-6. **Mejorar la Seguridad**: Revisar y mejorar las configuraciones de seguridad para proteger mejor la API contra ataques.
